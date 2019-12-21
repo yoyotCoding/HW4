@@ -1,0 +1,84 @@
+// ID: < 312278260>
+// full name: < Yoav Trifman>
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <math.h>
+#include<stdbool.h>
+
+void isRealDiv(int num, int* psum, int* pcount);
+bool isNumberPerfect(int n, int* psum);
+void printsAllPerfsAndCouples(int n);
+
+void main()
+{
+	int n, sum, sum2, count;
+	//printf("Please enter a number: ");
+	scanf("%d", &n);
+
+	//isRealDiv(n, &sum, &count);
+	//printf("%d %d", count, sum);
+
+	//printf("%s", isNumberPerfect(n, &sum) ? "\ntrue\n" : "\nfalse\n");
+	
+	/////printf("%d", sum);
+
+	printsAllPerfsAndCouples(n);
+	
+}
+
+void isRealDiv(int n, int* psum, int* pcount)
+{
+	int count = 0, sum = 0;
+	for (int i = 1; i <= sqrt(n); i++)
+	{
+		if (n % i == 0)
+		{
+			if (n / i == n)
+			{
+				sum += i;
+				count++;
+			}
+			else
+			{
+				count = count + 2;
+				sum = sum + i + (n / i);
+			}
+
+		}
+	}
+	*pcount = count;
+	*psum = sum;
+
+	//////printf("%d\n\n", *psum);
+}
+
+bool isNumberPerfect(int n, int* psum) {
+	/////printf("\n\nblabla %d %d\n\n", n, *psum);
+	if (n == *psum)
+		return true;
+	else
+		return false;
+}
+
+void printsAllPerfsAndCouples(int n) {
+	
+	int sum, count, sum2;
+
+	for (int i = 2; i <= n; i++) {
+		//Gimmel pt 1:
+
+		isRealDiv(n, &sum, &count);
+		//printf("\n\n%d\n\n", i);
+		if (isNumberPerfect(i, &sum)) //sum isn't changing. why??
+			printf("%d ", i);
+		
+		//Gimmel pt 2:
+
+		//isRealDiv(i, &sum, &count);
+		//isRealDiv(sum, &sum2, &count);
+		//if (i==sum)
+		//	printf ("%d %d\n", i, sum);
+	}
+	return;
+}
