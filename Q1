@@ -1,6 +1,3 @@
-// ID: < 312278260>
-// full name: < Yoav Trifman>
-
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <math.h>
