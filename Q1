@@ -17,8 +17,6 @@ void main()
 	//printf("%d %d", count, sum);
 
 	//printf("%s", isNumberPerfect(n, &sum) ? "\ntrue\n" : "\nfalse\n");
-	
-	/////printf("%d", sum);
 
 	printsAllPerfsAndCouples(n);
 	
@@ -46,12 +44,9 @@ void isRealDiv(int n, int* psum, int* pcount)
 	}
 	*pcount = count;
 	*psum = sum;
-
-	//////printf("%d\n\n", *psum);
 }
 
 bool isNumberPerfect(int n, int* psum) {
-	/////printf("\n\nblabla %d %d\n\n", n, *psum);
 	if (n == *psum)
 		return true;
 	else
