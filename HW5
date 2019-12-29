@@ -1,0 +1,104 @@
+// ID: 312278260
+// full name: Yoav Trifman
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+bool subsetSum(int arr[], int size, int sum);
+void printArr(int arr[], int size);
+
+void main()
+{
+	int size, sum;
+	scanf("%d", &sum);
+	//printf("here1\n");
+	scanf("%d", &size);
+	//printf("here2\n");
+	int* arr = (int*)calloc(size, sizeof(int));
+	for (int i = 0; i < size; i++)
+	{
+		scanf("%d ", &arr[i]);
+	//	printf("here3\n");
+	}
+
+	// You need to write this function according to question.
+	bool result = subsetSum(arr, size, sum);
+
+	printf("%s", result ? "true" : "false");
+}
+
+bool subsetSum(int arr[], int size, int sum)
+{
+	bool flag = false;
+
+	for (int i = 0; i < size; i++)
+	{
+		///printArr(arr, size);
+		//printf("\n");
+		printf("%d\n\n", sum);
+		if (sum >= arr[size - 1 - i])
+		{
+			sum -= arr[size - 1 - i];
+			arr[size - 1 - i] = NULL;
+		}
+		if (sum == 0)
+			flag = true;
+	}
+
+	if (flag == true)
+		return true;
+	else
+		return false;
+}
+
+void printArr(int arr[], int size)
+{
+	int i;
+
+	for (i = 0; i < size; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+}
+
+//
+//
+//int i = 1, temp;
+//
+//if (size <= 1)
+//{
+//	return true;
+//}
+//
+//else
+//{
+//	temp = arr[size - 1] - arr[size - i];
+//	if (temp != 0)
+//}
+
+
+/*
+14  6
+1 5 3 9 10
+
+14 - 10
+4 - 3
+1 - 1
+0
+True
+
+12-10
+2-1
+1
+false
+12-9
+3-1
+2
+false
+12-3
+9-
+
+
+*/
